@@ -30,10 +30,6 @@ export class BasicInputComponent {
     ];
   }
 
-  changeCategory(): void {
-    console.log(this.searchForm.value);
-  }
-
   onSearch(): void {
     this._store.dispatch(
       MovieActions.getMovies({

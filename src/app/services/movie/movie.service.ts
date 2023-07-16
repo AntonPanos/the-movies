@@ -19,12 +19,16 @@ export class MovieService {
     this._apiKey = environment.apiKey;
   }
 
-  getMovies(search: string, filter: string): Observable<IMovieResponse> {
+  getMovies(
+    search: string,
+    filter: string,
+    page = '1'
+  ): Observable<IMovieResponse> {
     const moviesResponse = this.http
       .get<IMovieResponse>(
-        `${this._movieUrl}${this._apiKey}&s=${search}&type=${filter}`
+        `${this._movieUrl}${this._apiKey}&s=${search}&type=${filter}&page=${page}`
       )
-      .pipe(delay(2000));
+      .pipe(delay(1000));
     return moviesResponse;
   }
 

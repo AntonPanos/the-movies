@@ -16,8 +16,8 @@ export class MoviesEffects {
   getMovies$ = createEffect(() =>
     this._actions$.pipe(
       ofType(MoviesActions.getMovies),
-      mergeMap(({ search, filter }) => {
-        return this._movieService.getMovies(search, filter).pipe(
+      mergeMap(({ search, filter, page }) => {
+        return this._movieService.getMovies(search, filter, page).pipe(
           map((movies) => {
             if (movies?.Error) throw new Error('No movies found');
             return MoviesActions.getMoviesSuccess({ movies: movies.Search });
