@@ -1,0 +1,18 @@
+<div class="indicator w-auto max-w-[12rem] transition-all hover:scale-105">
+  <span
+    class="indicator-item badge badge-primary bg-[var(--color-main)] border-[var(--color-main-muted)] text-[var(--color-primary)]"
+  >
+    {{ movie.Year }}
+  </span>
+  <div
+    class="card card-compact bg-base-100 shadow-xl cursor-pointer"
+    (click)="goToDetails(movie.imdbID)"
+  >
+    <figure class="h-64">
+      <img [src]="movie.Poster" [alt]="movie.imdbID" />
+    </figure>
+    <div class="card-body h-20 p-3">
+      <h2 class="card-title text-sm">{{ movie.Title }}</h2>
+    </div>
+  </div>
+</div>

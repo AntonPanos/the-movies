@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "assets/scss/index";
+
+:root {
+  font-family: "Poppins", sans-serif, system-ui;
+  line-height: 1.5;
+  font-size: 100%;
+  font-weight: 400;
+  box-sizing: border-box;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  color: var(--color-primary);
+  background-color: var(--bg-color-primary);
+}
+
+html {
+  height: 100vh;
+  height: calc(var(--app-height, 1vh) * 100);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding-left: var(--padding-x);
+  padding-right: var(--padding-x);
+  margin-left: auto;
+  margin-right: auto;
+}

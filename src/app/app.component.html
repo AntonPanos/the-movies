@@ -1,0 +1,13 @@
+<header class="fixed w-full top-0 z-10">
+  <app-top-bar />
+</header>
+<main class="main-container pt-[var(--header-height)]">
+  <router-outlet></router-outlet>
+  <lib-toastify-toast-container
+    [transition]="'slide'"
+    [autoClose]="3000"
+    [hideProgressBar]="true"
+    [closeOnClick]="false"
+    [pauseOnHover]="false"
+  ></lib-toastify-toast-container>
+</main>

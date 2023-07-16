@@ -1,0 +1,11 @@
+#root {
+  height: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+.main-container {
+  height: calc(100vh - var(--header-height));
+}

@@ -1,0 +1,19 @@
+:root {
+  --padding-x: 1em;
+  --header-height: 4.5rem;
+
+  /** White Theme */
+  --color-primary: #252422;
+  --bg-color-primary: #fffcf2;
+
+  --color-main: #ffb43a;
+  --color-main-muted: #ffc971;
+}
+
+[data-theme='dark'] {
+  --color-primary: #fffcf2;
+  --bg-color-primary: #252422;
+
+  --color-main: #b77711;
+  --color-main-muted: #b6812c;
+}

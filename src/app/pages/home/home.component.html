@@ -1,0 +1,15 @@
+<app-loader class="loader" *ngIf="isLoading$ | async"></app-loader>
+
+<div class="home home-container container">
+  <div class="home-content">
+    <app-basic-input />
+    <div class="home-content-main">
+      <div *ngFor="let movie of movies$ | async">
+        <app-movie-card [movie]="movie" />
+      </div>
+    </div>
+    <div *ngIf="(movies$ | async)?.length === 0" class="text-center">
+      No Movies available
+    </div>
+  </div>
+</div>

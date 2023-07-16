@@ -1,0 +1,15 @@
+# Compiled output
+/dist
+
+# Node
+/node_modules
+
+# Visual Studio Code
+.vscode/
+
+# Miscellaneous
+/.angular
+
+# System files
+.DS_Store
+Thumbs.db

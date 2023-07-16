@@ -1,0 +1,31 @@
+<form class="text-center py-5" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+  <div class="md:join join-horizontal">
+    <div>
+      <div>
+        <input
+          type="text"
+          formControlName="search"
+          class="input input-bordered join-item"
+          placeholder="Search..."
+        />
+      </div>
+    </div>
+    <select
+      (change)="changeCategory()"
+      formControlName="category"
+      class="select select-bordered join-item"
+    >
+      <option *ngFor="let category of categories" [ngValue]="category.value">
+        {{ category.label }}
+      </option>
+    </select>
+    <div class="indicator">
+      <button
+        type="submit"
+        class="btn join-item bg-[var(--color-main)] hover:bg-[var(--color-main-muted)] text-[var(--color-primary)]"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,41 @@
+<div *ngIf="movie" class="grid sm:grid-cols-2 grid-cols-1 gap-6 pt-4 px-6">
+  <div class="artboard rounded-xl">
+    <div class="indicator w-full">
+      <span
+        class="indicator-item indicator-end indicator-bottom indicator-position"
+      >
+        <div
+          class="radial-progress radial-size bg-white text-[var(--color-main)] border-4 border-white"
+          [style.--value]="rating"
+        >
+          {{ rating }}%
+        </div>
+      </span>
+      <img
+        class="h-full w-full object-cover rounded-xl"
+        [src]="movie.Poster"
+        [alt]="movie.imdbID"
+      />
+    </div>
+  </div>
+  <div>
+    <h2 class="text-3xl font-bold pb-3">{{ movie.Title }}</h2>
+    <p class="text-lg pb-12">
+      {{ movie.Plot }}
+    </p>
+    <div class="grid grid-cols-3 gap-2">
+      <p class="font-semibold">Writer:</p>
+      <p class="col-span-2">
+        {{ movie.Writer }}
+      </p>
+      <p class="font-semibold">Director:</p>
+      <p class="col-span-2">
+        {{ movie.Director }}
+      </p>
+      <p class="font-semibold">Actors:</p>
+      <p class="col-span-2">
+        {{ movie.Actors }}
+      </p>
+    </div>
+  </div>
+</div>
