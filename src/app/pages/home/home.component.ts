@@ -17,4 +17,8 @@ export class HomeComponent {
     this.isLoading$ = this._store.select(({ movies }) => movies.isLoading);
     this.movies$ = this._store.select(({ movies }) => movies.movies);
   }
+
+  trackByFn(index: number, movie: IMovie): string {
+    return movie.imdbID;
+  }
 }

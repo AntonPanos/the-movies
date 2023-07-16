@@ -42,4 +42,8 @@ export class BasicInputComponent {
       })
     );
   }
+
+  trackByFn(index: number, category: { label: string; value: string }): string {
+    return category.value;
+  }
 }

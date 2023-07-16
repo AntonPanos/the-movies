@@ -4,7 +4,7 @@
   <div class="home-content">
     <app-basic-input />
     <div class="home-content-main">
-      <div *ngFor="let movie of movies$ | async">
+      <div *ngFor="let movie of movies$ | async; trackBy: trackByFn">
         <app-movie-card [movie]="movie" />
       </div>
     </div>
