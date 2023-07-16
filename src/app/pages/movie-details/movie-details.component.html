@@ -19,7 +19,14 @@
     </div>
   </div>
   <div>
-    <h2 class="text-3xl font-bold pb-3">{{ movie.Title }}</h2>
+    <h2 class="flex items-center text-3xl font-bold pb-3">
+      {{ movie.Title }}
+      <span
+        class="badge ms-2 bg-[var(--color-main)] text-[var(--color-primary)]"
+      >
+        {{ movie.Year }}
+      </span>
+    </h2>
     <div class="font-semibold pb-4">
       Genre:
       <span
@@ -35,10 +42,16 @@
         {{ movie.Rated }}
       </span>
     </div>
+    <div class="font-semibold pb-4">
+      Duration:
+      <span class="badge bg-[var(--color-main)] text-[var(--color-primary)]">
+        {{ movie.Runtime }}
+      </span>
+    </div>
     <p class="text-lg pb-12">
       {{ movie.Plot }}
     </p>
-    <div class="grid grid-cols-3 gap-2">
+    <div class="grid grid-cols-3 gap-2 pb-12">
       <p class="font-semibold">Writer:</p>
       <p class="col-span-2">
         {{ movie.Writer }}
