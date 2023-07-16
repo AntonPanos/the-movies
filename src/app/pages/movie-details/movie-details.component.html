@@ -20,6 +20,21 @@
   </div>
   <div>
     <h2 class="text-3xl font-bold pb-3">{{ movie.Title }}</h2>
+    <div class="font-semibold pb-4">
+      Genre:
+      <span
+        *ngFor="let genre of genres; trackBy: trackByFn"
+        class="badge bg-[var(--color-main)] text-[var(--color-primary)]"
+      >
+        {{ genre }}
+      </span>
+    </div>
+    <div class="font-semibold pb-4">
+      Rated:
+      <span class="badge bg-[var(--color-main)] text-[var(--color-primary)]">
+        {{ movie.Rated }}
+      </span>
+    </div>
     <p class="text-lg pb-12">
       {{ movie.Plot }}
     </p>

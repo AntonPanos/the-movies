@@ -22,6 +22,14 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     return this._rating;
   }
 
+  private _genres: Array<string>;
+  set genres(g: string) {
+    this._genres = g.split(',');
+  }
+  get genres(): Array<string> {
+    return this._genres;
+  }
+
   movie: IMovieDetails | null;
 
   constructor(
@@ -32,6 +40,7 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     this._movieId = this._route.snapshot.paramMap.get('movieId') || '';
     this._movieSub$ = Subscription.EMPTY;
     this._rating = 0;
+    this._genres = [];
     this.movie = null;
   }
 
@@ -51,11 +60,16 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
           }
           this.movie = value;
           this.rating = this.movie.imdbRating;
+          this.genres = this.movie.Genre;
         },
         error: (error) => {
           this._toastr.error(error.Error);
         },
       });
+  }
+
+  trackByFn(index: number, genre: string): string {
+    return genre;
   }
 
   ngOnDestroy(): void {
