@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import * as MovieActions from '../../store/movieSlice/actions';
+import * as MoviesActions from '../../store/moviesSlice/actions';
 import { IAppState } from 'src/app/interfaces/app-state.interface';
 
 @Component({
@@ -32,7 +32,7 @@ export class BasicInputComponent {
 
   onSearch(): void {
     this._store.dispatch(
-      MovieActions.getMovies({
+      MoviesActions.getMovies({
         search: this.searchForm.value.search,
         filter: this.searchForm.value.category,
       })

@@ -1,5 +1,6 @@
-import { IMovieState } from './movie.interface';
+import { IMovieState, IMoviesState } from './movie.interface';
 
 export interface IAppState {
-  movies: IMovieState;
+  movies: IMoviesState;
+  movie: IMovieState;
 }

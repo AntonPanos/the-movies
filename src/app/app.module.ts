@@ -7,10 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { HomeModule } from './pages/home/home.module';
+import { MovieDetailsModule } from './pages/movie-details/movie-details.module';
 import { EffectsModule } from '@ngrx/effects';
 import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle.component';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
@@ -19,7 +19,6 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
   declarations: [
     AppComponent,
     NotFoundComponent,
-    MovieDetailsComponent,
     ThemeToggleComponent,
     TopBarComponent,
   ],
@@ -29,6 +28,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     AngularToastifyModule,
     HttpClientModule,
     HomeModule,
+    MovieDetailsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: !isDevMode(),
       // Register the ServiceWorker as soon as the application is stable
@@ -45,6 +45,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
     }),
   ],
+  exports: [],
   providers: [ToastService],
   bootstrap: [AppComponent],
 })

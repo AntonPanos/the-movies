@@ -33,9 +33,11 @@ export class MovieService {
   }
 
   getMovie(movieId: string): Observable<IMovieDetails> {
-    const movieResponse = this.http.get<IMovieDetails>(
-      `${this._movieUrl}${this._apiKey}&i=${movieId}&plot=full`
-    );
+    const movieResponse = this.http
+      .get<IMovieDetails>(
+        `${this._movieUrl}${this._apiKey}&i=${movieId}&plot=full`
+      )
+      .pipe(delay(1000));
     return movieResponse;
   }
 }

@@ -6,19 +6,6 @@ export interface IMovie {
   Year: string;
 }
 
-export interface IMovieState {
-  isLoading: boolean;
-  movies: Array<IMovie>;
-  error: string | null;
-}
-
-export interface IMovieResponse {
-  Search: Array<IMovie>;
-  Response: 'True' | 'False';
-  totalResults: string;
-  Error?: string;
-}
-
 export interface IMovieDetails {
   Title: string;
   Year: string;
@@ -46,4 +33,23 @@ export interface IMovieDetails {
   Website: string;
   Response: string;
   Error?: string;
+}
+
+export interface IMoviesState {
+  isLoading: boolean;
+  movies: Array<IMovie>;
+  error: string | null;
+}
+
+export interface IMovieResponse {
+  Search: Array<IMovie>;
+  Response: 'True' | 'False';
+  totalResults: string;
+  Error?: string;
+}
+
+export interface IMovieState {
+  isLoading: boolean;
+  movie: IMovieDetails;
+  error: string | null;
 }

@@ -32,10 +32,3 @@
     grid-template-columns: repeat(2, 1fr);
   }
 }
-
-.loader {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.312);
-  height: calc(100vh - var(--header-height));
-  width: 100%;
-}
