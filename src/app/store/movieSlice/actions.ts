@@ -1,15 +1,15 @@
 import { createAction, props } from '@ngrx/store';
-import { IMovie } from '../../interfaces/movie.interface';
+import { IMovieDetails } from '../../interfaces/movie.interface';
 
-export const getMovies = createAction(
-  '[Movies] Getting Movies',
-  props<{ search: string; filter: string }>()
+export const getMovie = createAction(
+  '[Movie] Getting a Movie',
+  props<{ movieId: string }>()
 );
-export const getMoviesSuccess = createAction(
-  '[Movies] Get Movies success',
-  props<{ movies: Array<IMovie> }>()
+export const getMovieSuccess = createAction(
+  '[Movie] Get a Movie success',
+  props<{ movie: IMovieDetails }>()
 );
-export const getMoviesFailure = createAction(
-  '[Movies] Get Movies failure',
+export const getMovieFailure = createAction(
+  '[Movie] Get a Movie failure',
   props<{ error: string }>()
 );

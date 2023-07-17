@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { IMovieDetails } from 'src/app/interfaces/movie.interface';
-import { MovieService } from 'src/app/services/movie/movie.service';
-import { ToastService } from 'angular-toastify';
+import { IAppState } from 'src/app/interfaces/app-state.interface';
+import * as MovieActions from '../../store/movieSlice/actions';
 
 @Component({
   selector: 'app-movie-details',
@@ -11,6 +12,10 @@ import { ToastService } from 'angular-toastify';
   styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent implements OnInit, OnDestroy {
+  isLoading$: Observable<boolean>;
+  movie$: Observable<IMovieDetails>;
+  error$: Observable<string | null>;
+
   private _movieSub$: Subscription;
   private _movieId: string;
 
@@ -30,18 +35,17 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
     return this._genres;
   }
 
-  movie: IMovieDetails | null;
-
   constructor(
-    private _route: ActivatedRoute,
-    private _movieService: MovieService,
-    private _toastr: ToastService
+    private _store: Store<IAppState>,
+    private _route: ActivatedRoute
   ) {
+    this.isLoading$ = this._store.select(({ movie }) => movie.isLoading);
+    this.movie$ = this._store.select(({ movie }) => movie.movie);
+    this.error$ = this._store.select(({ movie }) => movie.error);
     this._movieId = this._route.snapshot.paramMap.get('movieId') || '';
     this._movieSub$ = Subscription.EMPTY;
     this._rating = 0;
     this._genres = [];
-    this.movie = null;
   }
 
   ngOnInit(): void {
@@ -49,23 +53,18 @@ export class MovieDetailsComponent implements OnInit, OnDestroy {
   }
 
   getMovie(): void {
-    this._movieSub$ = this._movieService
-      .getMovie(this._movieId)
-      .pipe()
-      .subscribe({
-        next: (value) => {
-          if (value.Error) {
-            this._toastr.error(value.Error);
-            return;
-          }
-          this.movie = value;
-          this.rating = this.movie.imdbRating;
-          this.genres = this.movie.Genre;
-        },
-        error: (error) => {
-          this._toastr.error(error.Error);
-        },
-      });
+    this._store.dispatch(
+      MovieActions.getMovie({
+        movieId: this._movieId,
+      })
+    );
+    this._movieSub$ = this.movie$.subscribe({
+      next: (movie) => {
+        if (Object.keys(movie).length === 0) return;
+        this.rating = movie.imdbRating;
+        this.genres = movie.Genre;
+      },
+    });
   }
 
   trackByFn(index: number, genre: string): string {

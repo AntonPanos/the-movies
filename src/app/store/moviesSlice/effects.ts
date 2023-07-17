@@ -3,28 +3,28 @@ import { catchError, map, mergeMap, of } from 'rxjs';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ToastService } from 'angular-toastify';
 import { MovieService } from '../../services/movie/movie.service';
-import * as MovieActions from './actions';
+import * as MoviesActions from './actions';
 
 @Injectable()
-export class MovieEffects {
+export class MoviesEffects {
   constructor(
     private _actions$: Actions,
     private _movieService: MovieService,
     private _toastr: ToastService
   ) {}
 
-  getMovie$ = createEffect(() =>
+  getMovies$ = createEffect(() =>
     this._actions$.pipe(
-      ofType(MovieActions.getMovie),
-      mergeMap(({ movieId }) => {
-        return this._movieService.getMovie(movieId).pipe(
-          map((movie) => {
-            if (movie?.Error) throw new Error('Media not found');
-            return MovieActions.getMovieSuccess({ movie });
+      ofType(MoviesActions.getMovies),
+      mergeMap(({ search, filter, page }) => {
+        return this._movieService.getMovies(search, filter, page).pipe(
+          map((movies) => {
+            if (movies?.Error) throw new Error('No medias found');
+            return MoviesActions.getMoviesSuccess({ movies: movies.Search });
           }),
           catchError((error) => {
             this._toastr.error(error.message);
-            return of(MovieActions.getMovieFailure({ error: error.message }));
+            return of(MoviesActions.getMoviesFailure({ error: error.message }));
           })
         );
       })

@@ -1,5 +1,10 @@
-<div *ngIf="movie" class="grid sm:grid-cols-2 grid-cols-1 gap-6 pt-4 px-6">
-  <div class="artboard rounded-xl">
+<app-loader *ngIf="isLoading$ | async" />
+
+<div
+  *ngIf="!(isLoading$ | async) && !(error$ | async)"
+  class="grid sm:grid-cols-2 grid-cols-1 gap-6 pt-4 px-6"
+>
+  <div class="artboard w-4/5 m-auto rounded-xl">
     <div class="indicator w-full">
       <span
         class="indicator-item indicator-end indicator-bottom indicator-position"
@@ -13,18 +18,18 @@
       </span>
       <img
         class="h-full w-full object-cover rounded-xl"
-        [src]="movie.Poster"
-        [alt]="movie.imdbID"
+        [src]="(movie$ | async)?.Poster"
+        [alt]="(movie$ | async)?.imdbID"
       />
     </div>
   </div>
   <div>
     <h2 class="flex items-center text-3xl font-bold pb-3">
-      {{ movie.Title }}
+      {{ (movie$ | async)?.Title }}
       <span
         class="badge ms-2 bg-[var(--color-main)] text-[var(--color-primary)]"
       >
-        {{ movie.Year }}
+        {{ (movie$ | async)?.Year }}
       </span>
     </h2>
     <div class="font-semibold pb-4">
@@ -39,30 +44,30 @@
     <div class="font-semibold pb-4">
       Rated:
       <span class="badge bg-[var(--color-main)] text-[var(--color-primary)]">
-        {{ movie.Rated }}
+        {{ (movie$ | async)?.Rated }}
       </span>
     </div>
     <div class="font-semibold pb-4">
       Duration:
       <span class="badge bg-[var(--color-main)] text-[var(--color-primary)]">
-        {{ movie.Runtime }}
+        {{ (movie$ | async)?.Runtime }}
       </span>
     </div>
     <p class="text-lg pb-12">
-      {{ movie.Plot }}
+      {{ (movie$ | async)?.Plot }}
     </p>
     <div class="grid grid-cols-3 gap-2 pb-12">
       <p class="font-semibold">Writer:</p>
       <p class="col-span-2">
-        {{ movie.Writer }}
+        {{ (movie$ | async)?.Writer }}
       </p>
       <p class="font-semibold">Director:</p>
       <p class="col-span-2">
-        {{ movie.Director }}
+        {{ (movie$ | async)?.Director }}
       </p>
       <p class="font-semibold">Actors:</p>
       <p class="col-span-2">
-        {{ movie.Actors }}
+        {{ (movie$ | async)?.Actors }}
       </p>
     </div>
   </div>

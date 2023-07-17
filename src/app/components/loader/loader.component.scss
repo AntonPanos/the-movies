@@ -1,8 +1,20 @@
+.loader {
+  position: absolute;
+  background-color: var(--bg-loader);
+  border-radius: 30px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 5rem;
+  width: 10rem;
+}
+
 .loader-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 
 .wrapper {
