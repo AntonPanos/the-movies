@@ -13,3 +13,8 @@ export const getMoviesFailure = createAction(
   '[Movies] Get Movies failure',
   props<{ error: string }>()
 );
+
+export const resetMovies = createAction(
+  '[Movies] Reset Movies',
+  props<{ movies: Array<void> }>()
+);

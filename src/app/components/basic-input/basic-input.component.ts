@@ -31,12 +31,17 @@ export class BasicInputComponent {
   }
 
   onSearch(): void {
+    this.resetMovies();
     this._store.dispatch(
       MoviesActions.getMovies({
         search: this.searchForm.value.search,
         filter: this.searchForm.value.category,
       })
     );
+  }
+
+  resetMovies(): void {
+    this._store.dispatch(MoviesActions.resetMovies({ movies: [] }));
   }
 
   trackByFn(index: number, category: { label: string; value: string }): string {

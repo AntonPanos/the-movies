@@ -39,6 +39,8 @@ export interface IMoviesState {
   isLoading: boolean;
   movies: Array<IMovie>;
   error: string | null;
+  search: string;
+  filter: string;
 }
 
 export interface IMovieResponse {
