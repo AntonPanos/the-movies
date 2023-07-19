@@ -6,8 +6,13 @@
         <app-movie-card [movie]="movie" />
       </div>
     </div>
-    <app-loader *ngIf="isLoading$ | async" />
-    <div *ngIf="(movies$ | async)?.length === 0 && !(isLoading$ | async)" class="text-center">
+    <div class="mt-8" *ngIf="isLoading$ | async">
+      <app-loader />
+    </div>
+    <div
+      *ngIf="(movies$ | async)?.length === 0 && !(isLoading$ | async)"
+      class="text-center"
+    >
       No Movies available
     </div>
 

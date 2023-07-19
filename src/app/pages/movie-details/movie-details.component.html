@@ -1,4 +1,6 @@
-<app-loader *ngIf="isLoading$ | async" />
+<div class="mt-12" *ngIf="isLoading$ | async">
+  <app-loader />
+</div>
 
 <div
   *ngIf="!(isLoading$ | async) && !(error$ | async)"
