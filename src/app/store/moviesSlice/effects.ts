@@ -19,7 +19,7 @@ export class MoviesEffects {
       mergeMap(({ search, filter, page }) => {
         return this._movieService.getMovies(search, filter, page).pipe(
           map((movies) => {
-            if (movies?.Error) throw new Error('No medias found');
+            if (movies?.Error) throw new Error('No media found');
             return MoviesActions.getMoviesSuccess({ movies: movies.Search });
           }),
           catchError((error) => {

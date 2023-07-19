@@ -1,12 +1,9 @@
 .loader {
-  position: absolute;
   background-color: var(--bg-loader);
   border-radius: 30px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   height: 5rem;
   width: 10rem;
+  margin: auto;
 }
 
 .loader-container {

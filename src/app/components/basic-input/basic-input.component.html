@@ -10,11 +10,11 @@
         />
       </div>
     </div>
-    <select
-      formControlName="category"
-      class="select select-bordered join-item"
-    >
-      <option *ngFor="let category of categories; trackBy: trackByFn" [ngValue]="category.value">
+    <select formControlName="category" class="select select-bordered join-item">
+      <option
+        *ngFor="let category of categories; trackBy: trackByFn"
+        [ngValue]="category.value"
+      >
         {{ category.label }}
       </option>
     </select>

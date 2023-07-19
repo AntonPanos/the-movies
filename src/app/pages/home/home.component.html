@@ -1,5 +1,3 @@
-<app-loader *ngIf="isLoading$ | async" />
-
 <div class="home home-container container">
   <div class="home-content">
     <app-basic-input />
@@ -8,8 +6,16 @@
         <app-movie-card [movie]="movie" />
       </div>
     </div>
-    <div *ngIf="(movies$ | async)?.length === 0" class="text-center">
+    <div class="mt-8" *ngIf="isLoading$ | async">
+      <app-loader />
+    </div>
+    <div
+      *ngIf="(movies$ | async)?.length === 0 && !(isLoading$ | async)"
+      class="text-center"
+    >
       No Movies available
     </div>
+
+    <div class="h-20 w-full bg-transparent" #scrollDiv></div>
   </div>
 </div>
