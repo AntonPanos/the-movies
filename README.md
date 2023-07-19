@@ -19,7 +19,17 @@ npm (version 9.7.x or higher)
 - To start the dev server type: `npm run start`
 - To build the app for production type: `npm run build`
 
+Pushing to `main` branch publishes changes to this [page](https://main--warm-sundae-3c499d.netlify.app/)
+
+## Functionalities
+
+- Search for movies or series in the main page using the search pare at the top of th page.
+- Scroll down to load more movies/series
+- Click on any movie/series and view its details
+- Load the page in your phone and install it as PWA
+
 ## Screenshots
 
-![Page in white theme](src/assets/imgs/ss_page.png)
-![PWA in dark theme](src/assets/imgs/ss_pwa.jpg)
+<img src="src/assets/imgs/ss_page.png" alt="homepage"  width="600">
+
+<img src="src/assets/imgs/ss_pwa.jpg" alt="homepage-pwa"  width="300">
